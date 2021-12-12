@@ -1,1 +1,1 @@
-export { default } from "./Broker";
+export { default, BrokerType, AppointmentType, SelectedBrokerAppointment } from "./Broker";

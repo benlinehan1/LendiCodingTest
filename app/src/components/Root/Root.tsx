@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-
+import { SelectedBrokerAppointment } from "./AppointmentSelect/Broker";
 import Navigation from "./Navigation";
 import AppointmentSelect from "./AppointmentSelect";
 
@@ -26,13 +26,16 @@ const Heading = styled.strong.attrs({ role: "heading", level: 1 })`
   margin-top: 20px;
 `;
 
+
 const Root = () => {
+  const [selectedBrokerAppointment, setSelectedBrokerAppointment] = useState<SelectedBrokerAppointment>()
+
   return (
     <Wrapper>
-      <Navigation />
+      <Navigation selectedBrokerAppointment={selectedBrokerAppointment}/>
       <Content>
         <Heading>Amazing site</Heading>
-        <AppointmentSelect />
+        <AppointmentSelect selectedBrokerAppointment={selectedBrokerAppointment} onSelectedBrokerAppointment={setSelectedBrokerAppointment} />
       </Content>
     </Wrapper>
   );

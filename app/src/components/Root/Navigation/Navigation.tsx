@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { SelectedBrokerAppointment } from "../AppointmentSelect/Broker";
+
 
 const Wrapper = styled.div`
   background-color: #e7e7e7;
@@ -11,15 +13,30 @@ const Wrapper = styled.div`
   margin-bottom: 48px;
 `;
 
-const Navigation = () => {
-  return (
-    <Wrapper>
-      <strong>
-        Currently selected appointment: [appointment date] with [broker name]
-      </strong>
-      <strong>Welcome to Lendi</strong>
-    </Wrapper>
-  );
-};
+type NavigationProps = {
+  selectedBrokerAppointment: SelectedBrokerAppointment,
+}
+
+
+
+// console.log(selectedBrokerAppointment)
+
+  const Navigation = ({ selectedBrokerAppointment }:NavigationProps) => {
+
+    return (
+      <Wrapper >
+        {selectedBrokerAppointment && 
+            (<strong>
+
+              {`Currently selected appointment: ${selectedBrokerAppointment?.selectedAppointment?.date} with ${selectedBrokerAppointment?.name}`}
+              </strong>
+            )
+        }
+        
+        <strong>Welcome to Lendi</strong>
+      </Wrapper>
+    );
+  };
+
 
 export default Navigation;
